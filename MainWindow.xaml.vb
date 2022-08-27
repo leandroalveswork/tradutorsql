@@ -2,29 +2,29 @@
     Public Property ComandoSql As String
     Public Property CodigoCSharp As String
     Public Property NomeDaVariavel As String
-    Private _ePreenchimentoAutomatico As Boolean
-    
+    Private _naoEAtualizacaoDosDemaisEstados As Boolean
+
     Public Sub New()
-        InitializeComponent
+        InitializeComponent()
         ComandoSql = ""
         CodigoCSharp = ""
         NomeDaVariavel = ""
-        _ePreenchimentoAutomatico = False 
+        _naoEAtualizacaoDosDemaisEstados = False
     End Sub
 
-    Public Sub inputSql_TextChanged(sender As Object, args As EventArgs)
-        If (_ePreenchimentoAutomatico) Then
+    Public Sub InputSql_TextChanged(sender As Object, args As EventArgs)
+        If _naoEAtualizacaoDosDemaisEstados Then
             Return
         End If
-        ComandoSql = inputSql.Text
-        NomeDaVariavel = inputNomeDaVariavel.Text
-        _ePreenchimentoAutomatico = True
-        inputCSharp.Text = ConverterParaCSharp(ComandoSql, NomeDaVariavel)
-        _ePreenchimentoAutomatico = False
+        ComandoSql = InputSql.Text
+        NomeDaVariavel = InputNomeDaVariavel.Text
+        _naoEAtualizacaoDosDemaisEstados = True
+        InputCSharp.Text = ConverterParaCSharp(ComandoSql, NomeDaVariavel)
+        _naoEAtualizacaoDosDemaisEstados = False
     End Sub
 
     Private Function ConverterParaCSharp(ByVal comandoSql As String, ByVal nomeDaVariavel As String) As String
-        If (nomeDaVariavel Is Nothing Or nomeDaVariavel.Equals("")) Then
+        If nomeDaVariavel Is Nothing Or nomeDaVariavel.Equals("") Then
             Return ""
         End If
         Dim linhasSql() As String = comandoSql.Split(Environment.NewLine)
@@ -35,15 +35,15 @@
         Next
         Return totalCSharp
     End Function
-    
-    Public Sub inputCSharp_TextChanged(sender As Object, args As EventArgs)
-        If (_ePreenchimentoAutomatico) Then
+
+    Public Sub InputCSharp_TextChanged(sender As Object, args As EventArgs)
+        If _naoEAtualizacaoDosDemaisEstados Then
             Return
         End If
-        CodigoCSharp = inputCSharp.Text
-        _ePreenchimentoAutomatico = True
-        inputSql.Text = ConverterParaSql(CodigoCSharp)
-        _ePreenchimentoAutomatico = False
+        CodigoCSharp = InputCSharp.Text
+        _naoEAtualizacaoDosDemaisEstados = True
+        InputSql.Text = ConverterParaSql(CodigoCSharp)
+        _naoEAtualizacaoDosDemaisEstados = False
     End Sub
 
     Private Function ConverterParaSql(ByVal codigoCSharp As String) As String
@@ -54,7 +54,7 @@
             Dim idxPedaco As Integer = 0
             Dim comandoSqlExtraido As String = ""
             For Each pedacoEntreAspas As String In pedacosEntreAsAspas
-                If (idxPedaco <> 0 And idxPedaco <> pedacosEntreAsAspas.Length - 1)
+                If (idxPedaco <> 0 And idxPedaco <> pedacosEntreAsAspas.Length - 1) Then
                     comandoSqlExtraido &= pedacoEntreAspas & """"
                 End If
                 idxPedaco += 1
@@ -66,26 +66,26 @@
         Next
         Return totalSql
     End Function
-    
-    Public Sub inputNomeDaVariavel_TextChanged(sender As Object, args As EventArgs)
-        If (_ePreenchimentoAutomatico) Then
+
+    Public Sub InputNomeDaVariavel_TextChanged(sender As Object, args As EventArgs)
+        If _naoEAtualizacaoDosDemaisEstados Then
             Return
         End If
-        ComandoSql = inputSql.Text
-        NomeDaVariavel = inputNomeDaVariavel.Text
-        _ePreenchimentoAutomatico = True
-        inputCSharp.Text = ConverterParaCSharp(ComandoSql, NomeDaVariavel)
-        _ePreenchimentoAutomatico = False
+        ComandoSql = InputSql.Text
+        NomeDaVariavel = InputNomeDaVariavel.Text
+        _naoEAtualizacaoDosDemaisEstados = True
+        InputCSharp.Text = ConverterParaCSharp(ComandoSql, NomeDaVariavel)
+        _naoEAtualizacaoDosDemaisEstados = False
     End Sub
-    
-    Public Sub botaoLimpar_Click(sender As Object, args As RoutedEventArgs)
+
+    Public Sub BotaoLimpar_Click(sender As Object, args As RoutedEventArgs)
         ComandoSql = ""
         CodigoCSharp = ""
         NomeDaVariavel = ""
-        _ePreenchimentoAutomatico = True
-        inputSql.Text = ""
-        inputCSharp.Text = ""
-        inputNomeDaVariavel.Text = ""
-        _ePreenchimentoAutomatico = False
+        _naoEAtualizacaoDosDemaisEstados = True
+        InputSql.Text = ""
+        InputCSharp.Text = ""
+        InputNomeDaVariavel.Text = ""
+        _naoEAtualizacaoDosDemaisEstados = False
     End Sub
 End Class

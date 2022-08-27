@@ -10,21 +10,21 @@
         <TextBlock Text="Tradutor SQL" FontSize="18" FontWeight="Bold" />
         <TextBlock Text="Traduz comandos SQL em StringBuilder no C# e vice-versa." FontSize="14" />
         <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-            <StackPanel Orientation="Vertical" Margin="">
+            <StackPanel Orientation="Vertical">
                 <TextBlock Text="Comando SQL:" FontSize="14"/>
-                <TextBox Width="350" Height="250" Name="inputSql" TextWrapping="Wrap" FontSize="12" FontFamily="Consolas" Margin="0,4,0,0"
-                    AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextChanged="inputSql_TextChanged" />
+                <TextBox Width="350" Height="250" Name="InputSql" TextWrapping="Wrap" FontSize="12" FontFamily="Consolas" Margin="0,4,0,0"
+                    AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextChanged="InputSql_TextChanged" />
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="14,0,0,0">
                 <TextBlock Text="StringBuilder no C#:" FontSize="14"/>
-                <TextBox Width="350" Height="250" Name="inputCSharp" TextWrapping="Wrap" FontSize="12" FontFamily="Consolas" Margin="0,4,0,0"
-                    AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextChanged="inputCSharp_TextChanged"/>
+                <TextBox Width="350" Height="250" Name="InputCSharp" TextWrapping="Wrap" FontSize="12" FontFamily="Consolas" Margin="0,4,0,0"
+                    AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextChanged="InputCSharp_TextChanged"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="14,0,0,0">
+        <StackPanel Orientation="Horizontal" Margin="0,14,0,0">
             <TextBlock Text="Nome da Variável: " FontSize="14" />
-            <TextBox Width="300" Name="inputNomeDaVariavel" FontSize="12" FontFamily="Consolas" TextChanged="inputNomeDaVariavel_TextChanged"/>
-            <Button FontSize="14" Name="botaoLimpar" Click="botaoLimpar_Click">Limpar</Button>
+            <TextBox Width="300" Name="InputNomeDaVariavel" FontSize="12" FontFamily="Consolas" TextChanged="InputNomeDaVariavel_TextChanged" VerticalContentAlignment="Center"/>
+            <Button FontSize="14" Name="BotaoLimpar" Click="BotaoLimpar_Click" Margin="14,0,0,0">Limpar</Button>
         </StackPanel>
     </StackPanel>
 </Window>
